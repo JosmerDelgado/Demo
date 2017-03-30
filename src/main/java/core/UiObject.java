@@ -5,7 +5,6 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 /**
  * Created by Josmer Delgado on 25/3/2017.
@@ -133,10 +132,31 @@ public class UiObject {
         return this;
     }
     public UiObject scrollTo(){
-        //if(isXpath()) Android.driver.scrollTo()
+        if(!locator.contains("text")) throw new RuntimeException("Scroll method can only be used with text attributes and current locator");
+        if(isXpath()) Android.driver.scrollTo(locator.substring(locator.indexOf("@text=\""), locator.indexOf("\"")).replace("@text=\"",""));
+        else{
+            String text;
+            if(locator.contains("textContains"))text=locator.substring(locator.indexOf(".textContains(\""),locator.indexOf("\")")).replace(".textContains(\"","");
+            else text=locator.substring(locator.indexOf(".text(\""),locator.indexOf("\")")).replace(".text(\"","");
+            Android.driver.scrollTo(text);
+        }
         return this;
     }
 
+    public UiObject waitToAppear(int seconds){
+        Timer timer = new Timer();
+        timer.start();
+        while(!timer.expired(seconds)) if(exist()) break;
+        if(timer.expired(seconds)&& !exist()) throw new AssertionError("Element "+locator" failed to appear within "+seconds+" seconds. ");
+        return this;
+    }
 
+    public UiObject waitToDisappear(int seconds){
+        Timer timer = new Timer();
+        timer.start();
+        while(!timer.expired(seconds)) if(!exist()) break;
+        if(timer.expired(seconds)&& exist()) throw new AssertionError("Element "+locator" failed to disappear within "+seconds+" Seconds. ");
+        return this;
+    }
 }
 
