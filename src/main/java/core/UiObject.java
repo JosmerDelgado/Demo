@@ -147,7 +147,7 @@ public class UiObject {
         Timer timer = new Timer();
         timer.start();
         while(!timer.expired(seconds)) if(exist()) break;
-        if(timer.expired(seconds)&& !exist()) throw new AssertionError("Element "+locator" failed to appear within "+seconds+" seconds. ");
+        if(timer.expired(seconds)&& !exist()) throw new AssertionError("Element "+locator+" failed to appear within "+seconds+" seconds. ");
         return this;
     }
 
@@ -155,7 +155,7 @@ public class UiObject {
         Timer timer = new Timer();
         timer.start();
         while(!timer.expired(seconds)) if(!exist()) break;
-        if(timer.expired(seconds)&& exist()) throw new AssertionError("Element "+locator" failed to disappear within "+seconds+" Seconds. ");
+        if(timer.expired(seconds)&& exist()) throw new AssertionError("Element "+locator+" failed to disappear within "+seconds+" Seconds. ");
         return this;
     }
 }
