@@ -1,4 +1,6 @@
+import core.MyLogger;
 import core.UiSelector;
+import org.apache.log4j.Level;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -7,6 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class Runner {
     public static void main (String[] args){
 
+        MyLogger.log.setLevel(Level.DEBUG);
+        MyLogger.log.debug("Mensaje Debug");
     }
 
 }
