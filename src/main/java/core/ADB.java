@@ -15,9 +15,12 @@ public class ADB {
     public ADB(String deviceID){ ID = deviceID;}
 
     public static String command(String command){
+        MyLogger.log.debug("Formatting ADB Command "+command);
         if(command.startsWith("adb")) command=command.replace("adb ", ServerManager.getAndroidHome()+"/platform-tools/adb ");
         else throw new RuntimeException("This Method is designed to ADB command only!");
+        MyLogger.log.debug("Formatted ADB Command "+command);
         String output = ServerManager.runCommand(command);
+        MyLogger.log.debug("Output of the ADB Command "+output);
         if(output==null) return "";
         else return output;
     }
@@ -35,7 +38,7 @@ public class ADB {
     }
 
     public String getForegroundActivity(){
-        return command("adb -s "+ID+" shell dumpsys window windows | grep aCurrentFocus");
+        return command("adb -s "+ID+" shell dumpsys window windows | grep 'mCurrentFocus'");
     }
 
     public String getAndroidVersionAsString(){
@@ -72,7 +75,7 @@ public class ADB {
     }
 
     public void uninstallApp(String packageID){
-        command("adb -s "+ID+" uninstall -r -d " +packageID);
+        command("adb -s "+ID+" uninstall " +packageID);
     }
 
     public void clearLogBuffer(){

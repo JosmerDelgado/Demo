@@ -27,7 +27,7 @@ public class UiObject {
             if(isXpath()) element= Android.driver.findElementByXPath(locator);
             else element=Android.driver.findElementByAndroidUIAutomator(locator);
             return element.isDisplayed();
-        }catch (NoSuchElementException e){
+        }catch (Exception e){
             return false;
         }
     }
@@ -157,6 +157,7 @@ public class UiObject {
         while(!timer.expired(seconds)) if(!exist()) break;
         if(timer.expired(seconds)&& exist()) throw new AssertionError("Element "+locator+" failed to disappear within "+seconds+" Seconds. ");
         return this;
+
     }
 }
 
