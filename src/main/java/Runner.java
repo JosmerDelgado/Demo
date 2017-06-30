@@ -3,6 +3,7 @@ import core.ADB;
 import core.MyLogger;
 import core.UiObject;
 import core.UiSelector;
+import core.managers.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Level;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,18 +20,9 @@ public class Runner {
         MyLogger.log.setLevel(Level.DEBUG);
         AndroidDriver driver = null;
         try{
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("deviceName","192.168.68.101:5555");
-            capabilities.setCapability("platformName","Android");
-            capabilities.setCapability("app","/usr/local/lib/node_modules/appium" +
-                    "/node_modules/appium-unlock/bin/unlock_apk-debug.apk");
-            capabilities.setCapability("appPackage","io.appium.unlock");
-            capabilities.setCapability("appActivity","io.appium.unlock.Unlock");
-            driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-            Android.driver =driver;
+            DriverManager.createDriver();
 
-            ADB adb = new ADB("02df1251d0237fd1");
-            adb.openAppsActivity("org.zwanoo.android.speedtest","com.ookla.speedtest.softfacade.MainActivity");
+            Android.adb.openAppsActivity("org.zwanoo.android.speedtest","com.ookla.speedtest.softfacade.MainActivity");
 
 
             UiObject testAgainButton = new UiSelector().resourceId("org.zwanoo.android.speedtest:id/o2_button_text").makeUiObject();
@@ -47,7 +39,7 @@ public class Runner {
             MyLogger.log.info("Download: " + download.getText() );
             MyLogger.log.info("Upload: " + upload.getText() );
         }finally {
-            if(driver!=null)driver.quit();
+            if(driver!=null)DriverManager.killDriver();
         }
 
 
