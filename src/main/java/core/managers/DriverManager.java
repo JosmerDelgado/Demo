@@ -27,7 +27,7 @@ public class DriverManager {
             caps.setCapability("deviceName",deviceID);
             caps.setCapability("udid", deviceID);
             caps.setCapability("platformName","Android");
-            caps.setCapability("app","/usr/local/lib/node_modules/appium" +
+            caps.setCapability("Apps","/usr/local/lib/node_modules/appium" +
                     "/node_modules/appium-unlock/bin/unlock_apk-debug.apk");
             caps.setCapability("appPackage",unlockPackage);
             caps.setCapability("appActivity",unlockActivity);
