@@ -1,12 +1,16 @@
-package api.apps.Speedtest;
+package api.apps.speedtest;
 
 import api.android.Android;
+import api.apps.speedtest.menu.Menu;
 import api.interfaces.Application;
 
 /**
  * Created by josmer on 7/5/17.
  */
 public class Speedtest implements Application {
+
+    public Menu menu = new Menu();
+
     @Override
     public void forceStop() {
         Android.adb.forceStopApp(packageID());
@@ -31,5 +35,10 @@ public class Speedtest implements Application {
     @Override
     public String activityID() {
         return "com.ookla.speedtest.softfacade.MainActivity";
+    }
+
+    @Override
+    public Integer version() {
+        return Android.adb.getAndroidVersion();
     }
 }

@@ -10,6 +10,6 @@ import io.appium.java_client.android.AndroidDriver;
 public class Android {
     public static AndroidDriver driver;
     public static ADB adb;
-    public static Apps apps = new Apps();
+    public static Apps app = new Apps();
 
 }

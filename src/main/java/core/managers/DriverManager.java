@@ -27,8 +27,7 @@ public class DriverManager {
             caps.setCapability("deviceName",deviceID);
             caps.setCapability("udid", deviceID);
             caps.setCapability("platformName","Android");
-            caps.setCapability("Apps","/usr/local/lib/node_modules/appium" +
-                    "/node_modules/appium-unlock/bin/unlock_apk-debug.apk");
+            caps.setCapability("app","/usr/local/lib/node_modules/appium/node_modules/appium-unlock/bin/unlock_apk-debug.apk");
             caps.setCapability("appPackage",unlockPackage);
             caps.setCapability("appActivity",unlockActivity);
         return caps;
@@ -38,6 +37,8 @@ public class DriverManager {
         if(hosts==null){
             hosts=new HashMap<>();
             hosts.put("02df1251d0237fd1",new URL("http://127.0.0.1:4723/wd/hub"));
+            hosts.put("030f1e2208eb19b7",new URL("http://0.0.0.0:4723/wd/hub"));
+            hosts.put("0745b0dba15ae15a",new URL("http://0.0.0.0:4723/wd/hub"));
 
         }return hosts.get(deviceID);
 

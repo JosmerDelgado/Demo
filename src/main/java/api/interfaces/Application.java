@@ -9,4 +9,5 @@ public interface Application {
     Object open();
     String packageID();
     String activityID();
+    Integer version();
 }
