@@ -1,12 +1,11 @@
-package api.apps.dropcar;
+package api.apps.dropcarowner;
 
 import api.android.Android;
 
-import api.apps.dropcar.map.Map;
-import api.apps.dropcar.menu.Menu;
+import api.apps.dropcarowner.map.Map;
+import api.apps.dropcarowner.menu.Menu;
+import api.apps.dropcarowner.scheduled.Scheduled;
 import api.interfaces.Application;
-
-import java.beans.AppletInitializer;
 
 /**
  * Created by josmer on 7/21/17.
@@ -14,6 +13,7 @@ import java.beans.AppletInitializer;
 public class DropCar implements Application {
     public Menu menu = new Menu();
     public Map map = new Map();
+    public Scheduled schedule = new Scheduled();
 
     @Override
     public void forceStop() {
@@ -33,12 +33,12 @@ public class DropCar implements Application {
 
     @Override
     public String packageID() {
-        return "com.dropcar.owner";
+        return "com.dropcarowner.owner";
     }
 
     @Override
     public String activityID() {
-        return "com.dropcar.owner.initialFlow.StartActivity";
+        return "com.dropcarowner.owner.initialFlow.StartActivity";//"com.dropcarowner.owner.mainFlow.MainActivity";//
     }
 
     @Override

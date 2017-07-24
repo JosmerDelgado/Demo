@@ -1,5 +1,6 @@
-package api.apps.dropcar.map;
+package api.apps.dropcarowner.map;
 
+import api.android.Android;
 import api.interfaces.Activity;
 import core.MyLogger;
 import org.openqa.selenium.NoSuchElementException;
@@ -90,13 +91,16 @@ public class Map implements Activity {
         }
     }
 
-    @Override
-    public Object waitToLoad() {
-        try{
-            MyLogger.log.info("Wait until appear the ");
-            return null;
-        }catch(AssertionError e){
 
+
+    @Override
+    public Map waitToLoad() {
+        try{
+            MyLogger.log.info("Waiting for main activity appear the main view");
+            uiObject.mainButton().waitToAppear(10);
+            return Android.app.dropcar.map;
+        }catch(AssertionError e){
+            throw new AssertionError("Main activity failed to load/open");
         }
     }
 }

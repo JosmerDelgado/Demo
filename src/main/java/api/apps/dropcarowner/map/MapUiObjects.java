@@ -1,4 +1,4 @@
-package api.apps.dropcar.map;
+package api.apps.dropcarowner.map;
 
 import core.UiObject;
 import core.UiSelector;
@@ -19,7 +19,7 @@ public class MapUiObjects {
         currentCar;
 
     public UiObject mainButton(){
-        if(mainButton == null) mainButton = new UiSelector().resourceId("com.dropcar.owner:id/centerActionsContainer").makeUiObject();
+        if(mainButton == null) mainButton = new UiSelector().resourceId("com.dropcarowner.owner:id/centerActionsContainer").makeUiObject();
         return mainButton;
     }
 
@@ -29,37 +29,37 @@ public class MapUiObjects {
     }
 
     public UiObject multiScheduleButton(){
-        if(multiScheduleButton == null) multiScheduleButton = new UiSelector().resourceId("com.dropcar.owner:id/action_new_schedule").makeUiObject();
+        if(multiScheduleButton == null) multiScheduleButton = new UiSelector().resourceId("com.dropcarowner.owner:id/action_new_schedule").makeUiObject();
         return multiScheduleButton;
     }
 
     public UiObject searchLocationTextBox(){
-        if(searchLocationTextBox == null) searchLocationTextBox = new UiSelector().resourceId("com.dropcar.owner:id/searchAddress").makeUiObject();
+        if(searchLocationTextBox == null) searchLocationTextBox = new UiSelector().resourceId("com.dropcarowner.owner:id/searchAddress").makeUiObject();
         return searchLocationTextBox;
     }
 
     public UiObject addFavoriteLocation(){
-        if(addFavoriteLocation == null) addFavoriteLocation = new UiSelector().resourceId("com.dropcar.owner:id/notFavouriteStar").makeUiObject();
+        if(addFavoriteLocation == null) addFavoriteLocation = new UiSelector().resourceId("com.dropcarowner.owner:id/notFavouriteStar").makeUiObject();
         return addFavoriteLocation;
     }
 
     public UiObject removeFavoriteLocation(){
-        if(removeFavoriteLocation == null) removeFavoriteLocation = new UiSelector().resourceId("com.dropcar.owner:id/favouriteStar").makeUiObject();
+        if(removeFavoriteLocation == null) removeFavoriteLocation = new UiSelector().resourceId("com.dropcarowner.owner:id/favouriteStar").makeUiObject();
         return removeFavoriteLocation;
     }
 
     public UiObject myLocationButton(){
-        if(myLocationButton == null) myLocationButton = new UiSelector().resourceId("com.dropcar.owner:id/btnLocalizarme").makeUiObject();
+        if(myLocationButton == null) myLocationButton = new UiSelector().resourceId("com.dropcarowner.owner:id/btnLocalizarme").makeUiObject();
         return myLocationButton;
     }
 
     public UiObject currentCar(){
-        if(currentCar == null) currentCar = new UiSelector().resourceId("com.dropcar.owner:id/car_data").makeUiObject();
+        if(currentCar == null) currentCar = new UiSelector().resourceId("com.dropcarowner.owner:id/car_data").makeUiObject();
         return currentCar;
     }
 
     public UiObject nextScheduledJob(){
-        if(nextScheduledJob == null) nextScheduledJob = new UiSelector().resourceId("com.dropcar.owner:id/details").makeUiObject();
+        if(nextScheduledJob == null) nextScheduledJob = new UiSelector().resourceId("com.dropcarowner.owner:id/details").makeUiObject();
         return nextScheduledJob;
     }
 
